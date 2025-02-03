@@ -1,0 +1,59 @@
+{
+  printf("---------------------------\n");
+  printf("||    STUDENT RANKING SYSTEM      ||\n");
+  printf("---------------------------\n");
+  int size,i,j;
+  printf("enter the no of studnts :");
+  scanf("%d",&size);
+  struct student s[size];
+  for(i=0;i<size;i++){
+  s[i].total=0;
+  printf("enter student %d name :",i+1);
+  scanf(" %[^\n]s",s[i].name);
+  printf("enter roll no :");
+  scanf("%d",&s[i].rollno);
+  printf("enter the subject marks :");
+  for(j=0;j<5;j++) {
+    scanf("%d",&s[i].marks[j]);
+    s[i].total+=s[i].marks[j];
+  }
+}
+for (i=0;i<size-1;i++) {
+  for (j=i+1;j<size;j++){
+    if(s[i].total<s[j].total){
+      int temp=s[i].total;
+      s[i].total=s[j].total;
+      s[j].total=temp;
+    }
+  }
+}
+printf("\nRank\tRollno\tName\ttotal\n");
+printf("---------------------------\n");
+for(i=0;i<size;i++){
+  printf("%d\t%d\t%-15s\t%d\n",i+1,s[i].rollno,s[i].name,s[i].total);
+}
+}
+
+output
+---------------------------
+||    STUDENT RANKING SYSTEM      ||
+---------------------------
+enter the no of studnts :2
+enter student 1 name :kishore
+enter roll no :130
+enter the subject marks :90 87 86 96 84
+
+
+enter student 2 name :ram
+enter roll no :444
+enter the subject marks :99 74 59 69 89
+
+
+
+Rank	Rollno	Name	total
+---------------------------
+1	130	kishore        	363
+2	444	ram            	320
+
+
+=== Code Execution Successful ===
